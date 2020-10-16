@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Camera camera;
+    GameObject cameraParent;
 
     float playerFacingAngle;
     float currentTurnSpeed = 0f;
@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     public void Start()
     {
-        camera = gameObject.GetComponentInChildren<Camera>();
+        cameraParent = transform.Find("CameraParent").gameObject;
         rigidbody = gameObject.GetComponentInChildren<Rigidbody>();
         rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
     }
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
         playerFacingAngle += currentTurnSpeed * Time.deltaTime;
 
         Quaternion lookRotation = Quaternion.Euler(0f, playerFacingAngle, 0f);
-        camera.transform.rotation = lookRotation;
+        cameraParent.transform.rotation = lookRotation;
 
         float movementInput = 0f;
 
