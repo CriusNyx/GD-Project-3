@@ -60,4 +60,8 @@ public class Player : MonoBehaviour
 
         rigidbody.velocity = currentVelocity;
     }
+    public void ForceToLookAt(Vector3 direction)
+    {
+
+    }
 }
