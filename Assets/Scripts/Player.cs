@@ -49,10 +49,12 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             movementInput += 1f;
+            GetComponent<AudioSource>().Play();
         }
         if (Input.GetKey(KeyCode.S))
         {
             movementInput += -0.5f;
+            GetComponent<AudioSource>().Play();
         }
 
         Vector3 currentVelocity = rigidbody.velocity;
