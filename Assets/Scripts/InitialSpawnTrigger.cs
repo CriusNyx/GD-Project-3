@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class InitialSpawnTrigger : MonoBehaviour
 {
     public MonsterBehavior Monster;
     public Player Player;
+    public AudioSource monsterClip, ringingClip;
+
     void Start()
     {
 
@@ -20,6 +23,8 @@ public class InitialSpawnTrigger : MonoBehaviour
     void OnTriggerEnter()
     {
         StartCoroutine(SpawnMonster());
+        monsterClip.Play();
+        ringingClip.Play();
 
     }
     IEnumerator SpawnMonster()
