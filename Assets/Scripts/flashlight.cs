@@ -9,11 +9,13 @@ public class flashlight : MonoBehaviour
     // Start is called before the first frame update
     public Text textObject;
     public Light lt;
-    public int lightDrainSpeed = 20;
+    public int lightDrainSpeed = 10;
+    
     void Start()
     {
         InvokeRepeating("drain", 3, lightDrainSpeed);
-     
+        
+
     }
 
     // Update is called once per frame
@@ -24,24 +26,29 @@ public class flashlight : MonoBehaviour
         //}
         
 
-    
-      
+
+
     }
 
     void drain()
     {
-        
+
         if (textObject.text.Length > 0)
         {
             textObject.text = textObject.text.Remove(textObject.text.Length - 1, 1);
+            lt.intensity = 0.75F;
         }
         else
         {
-             lt.intensity = 0;
+            lt.intensity = 0;
             //trigger end game screen here
-            
+
         }
-    
+
     }
+
+
+
+
 }
   
