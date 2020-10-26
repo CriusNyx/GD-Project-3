@@ -38,9 +38,6 @@ public class MonsterBehavior : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, target, maxSpeed * Time.deltaTime);
         }
-    }
-    void OnTriggerEnter()
-    {
-        UnityEngine.Debug.Log("You have died. Game Over.");
+        
     }
 }
