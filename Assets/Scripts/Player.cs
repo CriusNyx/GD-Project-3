@@ -16,12 +16,38 @@ public class Player : MonoBehaviour
 
     Vector3 velocity;
     new Rigidbody rigidbody;
+    AudioSource footstepSound;
+    AudioSource bigThunder;
+    AudioSource rain;
+    AudioSource scarySound;
+    GameObject normalLights;
+    GameObject emergancyLights;
+    GameObject flashlight;
 
     public void Start()
     {
         cameraParent = transform.Find("CameraParent").gameObject;
         rigidbody = gameObject.GetComponentInChildren<Rigidbody>();
         rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+
+        footstepSound = transform.Find("Sounds/FootstepSound").GetComponent<AudioSource>();
+        bigThunder = transform.Find("Sounds/BigThunder").GetComponent<AudioSource>();
+
+        normalLights = GameObject.Find("NormalLights");
+        emergancyLights = GameObject.Find("EmergancyLights");
+
+        emergancyLights.SetActive(false);
+
+        flashlight = transform.Find("CameraParent/Flashlight").gameObject;
+
+        flashlight.SetActive(false);
+
+        rain = transform.Find("Sounds/Rain").GetComponent<AudioSource>();
+
+        scarySound = transform.Find("Sounds/ScarySound").GetComponent<AudioSource>();
+
+        StartCoroutine(FootstepSounds());
+        StartCoroutine(PowerOut());
     }
 
     private void Update()
@@ -49,12 +75,12 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             movementInput += 1f;
-            GetComponent<AudioSource>().Play();
+            //GetComponent<AudioSource>().Play();
         }
         if (Input.GetKey(KeyCode.S))
         {
             movementInput += -0.5f;
-            GetComponent<AudioSource>().Play();
+            //GetComponent<AudioSource>().Play();
         }
 
         Vector3 currentVelocity = rigidbody.velocity;
@@ -65,5 +91,75 @@ public class Player : MonoBehaviour
     public void ForceToLookAt(Vector3 direction)
     {
 
+    }
+
+    private IEnumerator FootstepSounds()
+    {
+        while (true)
+        {
+            int input = 0;
+            if (Input.GetKey(KeyCode.W)) 
+                input += 1;
+            if (Input.GetKey(KeyCode.S))
+                input -= 1;
+            if(input != 0)
+            {
+                footstepSound.Play();
+            }
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    private IEnumerator PowerOut()
+    {
+        yield return new WaitForSeconds(3f);
+        bigThunder.Play();
+        yield return new WaitForSeconds(1.5f);
+        normalLights.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        emergancyLights.SetActive(true);
+        yield return new WaitForSeconds(0.25f);
+        emergancyLights.SetActive(false);
+        yield return new WaitForSeconds(0.25f);
+        emergancyLights.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        flashlight.SetActive(true);
+    }
+
+    public void TriggerRainStop()
+    {
+        StartCoroutine(FadeOut(rain, 5f));
+    }
+
+    private IEnumerator FadeOut(AudioSource source, float time)
+    {
+        float localTime = 0f;
+        while(localTime < time)
+        {
+            localTime += Time.deltaTime;
+            float t = localTime / time;
+            source.volume = 1 - t;
+            yield return null;
+        }
+        source.Stop();
+    }
+
+    public void PlayScarySound()
+    {
+        StartCoroutine(FadeIn(scarySound, 5f));
+    }
+
+    private IEnumerator FadeIn(AudioSource source, float time)
+    {
+        source.volume = 0;
+        source.Play();
+        float localTime = 0f;
+        while (localTime < time)
+        {
+            localTime += Time.deltaTime;
+            float t = localTime / time;
+            source.volume = t;
+            yield return null;
+        }
     }
 }

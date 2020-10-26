@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 public class InitialSpawnTrigger : MonoBehaviour
 {
     public MonsterBehavior Monster;
-    public Player Player;
+    public Player player;
     public AudioSource monsterClip, ringingClip;
 
     void Start()
@@ -25,7 +25,7 @@ public class InitialSpawnTrigger : MonoBehaviour
         StartCoroutine(SpawnMonster());
         monsterClip.Play();
         ringingClip.Play();
-
+        player.PlayScarySound();
     }
     IEnumerator SpawnMonster()
     {
