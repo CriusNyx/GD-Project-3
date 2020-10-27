@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
     AudioSource bigThunder;
     AudioSource rain;
     AudioSource scarySound;
+    AudioSource fuseBox;
+    AudioSource killerFound;
+    AudioSource bodyFound;
     GameObject normalLights;
     GameObject emergancyLights;
     GameObject flashlight;
@@ -46,6 +49,11 @@ public class Player : MonoBehaviour
         rain = transform.Find("Sounds/Rain").GetComponent<AudioSource>();
 
         scarySound = transform.Find("Sounds/ScarySound").GetComponent<AudioSource>();
+
+        // Voice over sounds
+        fuseBox = transform.Find("Sounds/FuseBox").GetComponent<AudioSource>();
+        bodyFound = transform.Find("Sounds/Body").GetComponent<AudioSource>();
+        killerFound = transform.Find("Sounds/CallCops").GetComponent<AudioSource>();
 
         StartCoroutine(FootstepSounds());
         StartCoroutine(PowerOut());
@@ -113,7 +121,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator PowerOut()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(10f);
         bigThunder.Play();
         yield return new WaitForSeconds(1.5f);
         normalLights.SetActive(false);
@@ -125,6 +133,7 @@ public class Player : MonoBehaviour
         emergancyLights.SetActive(true);
         yield return new WaitForSeconds(2f);
         flashlight.SetActive(true);
+        fuseBox.Play();
     }
 
     public void TriggerRainStop()
@@ -147,6 +156,7 @@ public class Player : MonoBehaviour
 
     public void PlayScarySound()
     {
+        killerFound.Play();
         StartCoroutine(FadeIn(scarySound, 5f));
     }
 
