@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
     GameObject emergancyLights;
     GameObject flashlight;
 
+    bool showControls = true;
+
     public void Start()
     {
         cameraParent = transform.Find("CameraParent").gameObject;
@@ -140,6 +142,16 @@ public class Player : MonoBehaviour
     public void TriggerRainStop()
     {
         StartCoroutine(FadeOut(rain, 5f));
+        showControls = false;
+    }
+
+    private void OnGUI()
+    {
+        if (showControls)
+        {
+            GUILayout.Label("W/A/S/D: Move");
+            GUILayout.Label("E at charge station: Recharge Flashlight");
+        }
     }
 
     private IEnumerator FadeOut(AudioSource source, float time)
@@ -183,7 +195,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.name == "Monster")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene("GameOver");
         }
 
     }
