@@ -154,6 +154,11 @@ public class Player : MonoBehaviour
         source.Stop();
     }
 
+    public void PlayBodyFound()
+    {
+        bodyFound.Play();
+    }
+
     public void PlayScarySound()
     {
         killerFound.Play();
