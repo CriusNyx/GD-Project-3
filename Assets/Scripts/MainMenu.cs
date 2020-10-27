@@ -7,8 +7,8 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicScript>().PlayMusic();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //GameObject.FindGameObjectWithTag("Music").GetComponent<MusicScript>().PlayMusic();
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void QuitGame()

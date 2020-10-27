@@ -125,6 +125,7 @@ public class Player : MonoBehaviour
         bigThunder.Play();
         yield return new WaitForSeconds(1.5f);
         normalLights.SetActive(false);
+        Destroy(GameObject.Find("RadioBroadcast"));
         yield return new WaitForSeconds(1f);
         emergancyLights.SetActive(true);
         yield return new WaitForSeconds(0.25f);

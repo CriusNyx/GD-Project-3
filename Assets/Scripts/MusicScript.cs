@@ -5,10 +5,20 @@ using UnityEngine;
 public class MusicScript : MonoBehaviour
 {
     private AudioSource audio;
+    public bool destroyWhenDone = false;
+
     private void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
         audio = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        if (!audio.isPlaying)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void PlayMusic()
