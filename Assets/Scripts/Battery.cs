@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Globalization;
+using System;
 
 public class Battery : MonoBehaviour
 {
     public Text textObject;
     public Collider other;
+
  
     // Start is called before the first frame update
     void Start()
@@ -31,20 +33,24 @@ public class Battery : MonoBehaviour
         {
             
             KeyCode key = KeyCode.E;
+           
 
             if (Input.GetKeyDown(key))
             {
 
                // Destroy(other.gameObject); 
                 setText(y);
+               
 
             }
     
 
 
         }
+ 
         
     }
+
     void setText(string newText)
     {
         textObject.text = newText;

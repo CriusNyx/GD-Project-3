@@ -13,7 +13,7 @@ public class flashlight : MonoBehaviour
     
     void Start()
     {
-        InvokeRepeating("drain", 3, lightDrainSpeed);
+        InvokeRepeating("drain", 10, lightDrainSpeed);
         
 
     }
