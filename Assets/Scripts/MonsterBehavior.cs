@@ -8,7 +8,8 @@ using UnityEngine;
 
 public class MonsterBehavior : MonoBehaviour
 {
-    float maxSpeed = 1;
+    float fastSpeed = 10;
+    float slowSpeed = 2;
     new Rigidbody rigidbody;
     Vector3 monsterVelocity;
     bool hasSpawned;
@@ -34,9 +35,13 @@ public class MonsterBehavior : MonoBehaviour
     void MoveMonster()
     {
         target = GameObject.Find("Player").transform.position;
-        if (hasSpawned)
+        if (hasSpawned && Vector3.Distance(target, transform.position) > 15)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target, maxSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target, fastSpeed * Time.deltaTime);
+        }
+        if (hasSpawned && Vector3.Distance(target, transform.position) < 15)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target, slowSpeed * Time.deltaTime);
         }
         
     }
