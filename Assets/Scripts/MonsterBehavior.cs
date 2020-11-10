@@ -12,7 +12,7 @@ public class MonsterBehavior : MonoBehaviour
     float slowSpeed = 2;
     new Rigidbody rigidbody;
     Vector3 monsterVelocity;
-    bool hasSpawned;
+    public bool hasSpawned;
     Vector3 target;
     void Start()
     {
