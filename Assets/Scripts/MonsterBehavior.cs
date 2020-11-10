@@ -35,11 +35,11 @@ public class MonsterBehavior : MonoBehaviour
     void MoveMonster()
     {
         target = GameObject.Find("Player").transform.position;
-        if (hasSpawned && Vector3.Distance(target, transform.position) > 15)
+        if (hasSpawned && Vector3.Distance(target, transform.position) > 20)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, fastSpeed * Time.deltaTime);
         }
-        if (hasSpawned && Vector3.Distance(target, transform.position) < 15)
+        if (hasSpawned && Vector3.Distance(target, transform.position) < 20)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, slowSpeed * Time.deltaTime);
         }
