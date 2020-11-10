@@ -34,6 +34,6 @@ public class PhonePrompt : MonoBehaviour
         copsCalled.Play();
         yield return new WaitForSeconds(4);
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Victory");
     }
 }
