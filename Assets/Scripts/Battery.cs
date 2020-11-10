@@ -15,6 +15,7 @@ public class Battery : MonoBehaviour
     void Start()
     {
         gameObject.tag = "Player";
+        textObject = GameObject.Find("batteryBar").GetComponent<Text>();
     }
 
     // Update is called once per frame

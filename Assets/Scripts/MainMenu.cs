@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame()
+    public static string testMode = "";
+
+    public void PlayGame(string testMode)
     {
+        MainMenu.testMode = testMode;
         //GameObject.FindGameObjectWithTag("Music").GetComponent<MusicScript>().PlayMusic();
         SceneManager.LoadScene("SampleScene");
     }
