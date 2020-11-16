@@ -1420,10 +1420,40 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4822291736976302962, guid: 3aeaedd8696658a48b315e1fbb8c46e6,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822291736976302962, guid: 3aeaedd8696658a48b315e1fbb8c46e6,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822291736976302962, guid: 3aeaedd8696658a48b315e1fbb8c46e6,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4822291737548434936, guid: 3aeaedd8696658a48b315e1fbb8c46e6,
         type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822291737548434936, guid: 3aeaedd8696658a48b315e1fbb8c46e6,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822291737548434936, guid: 3aeaedd8696658a48b315e1fbb8c46e6,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822291737548434936, guid: 3aeaedd8696658a48b315e1fbb8c46e6,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aeaedd8696658a48b315e1fbb8c46e6, type: 3}
@@ -10315,6 +10345,11 @@ PrefabInstance:
     - target: {fileID: 6658061122311923882, guid: b6e819073e80a7c4db0c59a63aff15a0,
         type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6658061122311923882, guid: b6e819073e80a7c4db0c59a63aff15a0,
+        type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6658061122311923886, guid: b6e819073e80a7c4db0c59a63aff15a0,
