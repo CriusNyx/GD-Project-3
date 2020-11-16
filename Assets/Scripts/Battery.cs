@@ -10,6 +10,7 @@ public class Battery : MonoBehaviour
     public Text textObject;
     public Collider other;
 
+    public bool playerIsTouching = false;
  
     // Start is called before the first frame update
     void Start()
@@ -21,35 +22,31 @@ public class Battery : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        OnTrigger(other);
-
+        OnTrigger();
     }
 
-    void OnTrigger(Collider other)
+    private void OnTrigger()
     {
-
-        string y = "_______________";
-        if (other.tag == "Player")
-
+        if(playerIsTouching && Input.GetKeyDown(KeyCode.E))
         {
-            
-            KeyCode key = KeyCode.E;
-           
-
-            if (Input.GetKeyDown(key))
-            {
-
-               // Destroy(other.gameObject); 
-                setText(y);
-               
-
-            }
-    
-
-
+            setText("_______________");
         }
- 
-        
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            playerIsTouching = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            playerIsTouching = false;
+        }
     }
 
     void setText(string newText)
